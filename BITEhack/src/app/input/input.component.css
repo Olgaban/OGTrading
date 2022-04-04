@@ -1,0 +1,25 @@
+.input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form > * {
+  margin: 20px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.currency {
+  display: block;
+  width: 50px;
+  text-align: center;
+}

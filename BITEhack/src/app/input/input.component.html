@@ -1,0 +1,75 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="input">
+    <div class="wrapper">
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="startCurrency"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Pick starting currency
+        </button>
+        <ul
+          class="dropdown-menu dropdown-menu-dark"
+          aria-labelledby="startCurrency"
+        >
+          <li *ngFor="let currency of currencies">
+            <input
+              (change)="onStartCurrencyChange($event)"
+              type="radio"
+              class="form-check-input"
+              name="startCurrency"
+              [id]="'start' + currency"
+              [value]="currency"
+              required
+            />
+            <label class="form-check-label" [for]="'start' + currency">{{
+              currency
+            }}</label>
+          </li>
+        </ul>
+      </div>
+      <span class="currency"> {{ currService.startCurrency }} </span>
+    </div>
+
+    <div class="wrapper">
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="targetCurrency"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Pick target currency
+        </button>
+        <ul
+          class="dropdown-menu dropdown-menu-dark"
+          aria-labelledby="targetCurrency"
+        >
+          <li *ngFor="let currency of currencies">
+            <input
+              (change)="onTargetCurrencyChange($event)"
+              type="radio"
+              class="form-check-input"
+              name="targetCurrency"
+              [id]="'target' + currency"
+              [value]="currency"
+              required
+            />
+            <label class="form-check-label" [for]="'target' + currency">
+              {{ currency }}
+            </label>
+          </li>
+        </ul>
+      </div>
+      <span class="currency"> {{ currService.targetCurrency }} </span>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="!f.valid">
+    get exchange sequence!
+  </button>
+</form>
